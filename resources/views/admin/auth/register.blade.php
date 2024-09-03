@@ -75,7 +75,7 @@
         <button type="submit" class="btn btn-block btn-warning mt-2">Register</button>
       </form>
 
-      <a href="{{ route('admin.login')}}" class="text-center">I already have a membership</a>
+      <a href="{{ route('admin.login') }}" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

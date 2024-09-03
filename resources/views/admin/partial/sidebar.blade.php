@@ -12,6 +12,7 @@
         <div class="image">
           <img src="{{ asset('dist/logo/adminG.jpg')}}" class="img-circle elevation-2" alt="User Image" width="50px;" height="50px;">
         </div>
+
         <div class="info">
           <a href="#" class="d-block">Admin Manager</a>
         </div>
@@ -27,6 +28,37 @@
             </button>
           </div>
         </div>
+
+      <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+      <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Category
+                <i class="fas fa-angle-left right"></i>
+              </p>
+            </a>
+
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.create')}}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Create</p>
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Edit</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+      </ul>
+      </nav>
       </div>
+
     </div>
-  </aside>
+</aside>

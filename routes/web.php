@@ -1,6 +1,11 @@
 <?php
 
+use App\Http\Controllers\auth\HomeController;
+use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\admin\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\authMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,26 +18,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// for frontend
 Route::get('/', function () {
     return view('welcome');
 });
 
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.layout.master');
-});
 
 
-Route::get('/admin/login', function() {
-    return view('admin.auth.login');
-})->name("admin.login");
+//  for admin
+// Route::prefix('/admin')->group(function() {
+//     Route::get('/dashboard', function () {
+//         return view('admin.layout.master');
+//     });
+
+//     Route::get('/login', function() {
+//         return view('admin.auth.login');
+//     })->name("admin.login");
+
+//     Route::get('/register', function() {
+//         return view('admin.auth.register');
+//     })->name("admin.register");
+
+//     Route::get('/category/create', function () {
+//         return view('admin.category.create');
+//     })->name("admin.create");
+// });
 
 
-Route::get('/admin/register', function() {
-    return view('admin.auth.register');
-})->name("admin.register");
 
+Route::prefix('/admin')->group(function() {
+    Route::get('/dashboard', [HomeController::class, 'index']);
 
-Route::get('/hi', function () {
-    return view('admin.hello');
+    Route::get('/login', [LoginController::class, 'login'])->name("admin.login");
+
+    Route::get('/register', [RegisterController::class, 'register'])->name("admin.register");
+
+    Route::get('/category/create',[CategoryController::class, 'create'])->name("admin.create");
 });
